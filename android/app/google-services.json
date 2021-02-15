@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "223019392404",
+    "project_id": "wallet-manager-2436d",
+    "storage_bucket": "wallet-manager-2436d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223019392404:android:06bb204cf6325af3a54381",
+        "android_client_info": {
+          "package_name": "com.tuzgen.wallet_manager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223019392404-ilnajs39utu419ue11e5lb2ggp5il3ap.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB8RN460l8zuWSAhrN6bfNSOyV9qST2bWw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223019392404-ilnajs39utu419ue11e5lb2ggp5il3ap.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

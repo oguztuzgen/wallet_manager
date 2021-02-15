@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:sqflite/sqflite.dart';
-import 'package:wallet_manager/db/user_db.dart';
+import 'package:wallet_manager/db/db_manager.dart';
 import 'package:wallet_manager/model/category.dart';
 import 'package:wallet_manager/views/popups/category_screen.dart';
 

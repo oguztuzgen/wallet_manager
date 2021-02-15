@@ -19,7 +19,7 @@ class _TransactionListState extends State<TransactionList> {
   void _editSelectedTransaction
   (BuildContext context, int index) async {
     dynamic result = await Navigator.pushNamed(
-      context, '/editadd', arguments: {
+      context, '/editAdd', arguments: {
         'description' : widget.transactions[index].description,
         'amount' : widget.transactions[index].amount,
         'dateTime' : widget.transactions[index].dateTime,

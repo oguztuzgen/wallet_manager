@@ -4,8 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  ExpenseTrackerUser _fromFirebaseUser(UserCredential user) {
-    return user != null ? ExpenseTrackerUser(userID: user.user.uid) : null;
+  WMUser _fromFirebaseUser(UserCredential user) {
+    return user != null ? WMUser(userID: user.user.uid) : null;
   }
 
   Future<dynamic> signInEmailPassword(String email, String password) async {

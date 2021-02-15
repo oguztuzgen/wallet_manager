@@ -1,10 +1,10 @@
-class ExpenseTrackerUser {
+class WMUser {
   int dbID;
   String userID;
   int categoriesID;
   int expenseID;
 
-  ExpenseTrackerUser({this.dbID, this.userID, this.categoriesID, this.expenseID});
+  WMUser({this.dbID, this.userID, this.categoriesID, this.expenseID});
 
   Map<String, dynamic> toMap() {
     return {
@@ -15,7 +15,7 @@ class ExpenseTrackerUser {
     };
   }
 
-  factory ExpenseTrackerUser.fromMap(Map<String, dynamic> json) => ExpenseTrackerUser(
+  factory WMUser.fromMap(Map<String, dynamic> json) => WMUser(
     dbID: json['id'],
     userID: json['uid'],
     categoriesID: json['categoriesid'],

@@ -7,14 +7,6 @@ import 'package:sqflite/sqflite.dart';
 import 'package:sqflite/sqlite_api.dart';
 import 'package:path/path.dart';
 
-final String tableName = 'users';
-final String tableNameCategories = 'categories';
-final String columnDBid = 'id';
-final String columnUID = 'uid';
-final String columnCategoriesID = 'categoriesid';
-final String columnExpenseID = 'expenseid';
-final String columnCategory = 'category';
-
 class UserDB {
   static UserDB _userDB;
   static Database _database; // * Singleton db
@@ -53,25 +45,32 @@ class UserDB {
 
   Future<void> createTables(Database db) async {
     await db.execute('''
-          CREATE TABLE IF NOT EXISTS $tableNameCategories (
-          $columnDBid INTEGER PRIMARY KEY AUTOINCREMENT,
-          $columnCategory TEXT NOT NULL);
+          CREATE TABLE IF NOT EXISTS owns_categories (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          categoriesId INTEGER,
+          usersId INTEGER);
           ''');
 
     await db.execute('''
-          CREATE TABLE IF NOT EXISTS $tableName (
-          $columnDBid INTEGER PRIMARY KEY AUTOINCREMENT,
-          $columnUID TEXT NOT NULL,
-          $columnCategoriesID INTEGER,
-          $columnExpenseID INTEGER);
+          CREATE TABLE IF NOT EXISTS categories (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          category TEXT NOT NULL);
+          ''');
+
+    await db.execute('''
+          CREATE TABLE IF NOT EXISTS users (
+          id INTEGER PRIMARY KEY AUTOINCREMENT,
+          uid TEXT NOT NULL,
+          categoriesId INTEGER,
+          expensesId INTEGER);
         ''');
   }
 
-  Future<int> insertUser(ExpenseTrackerUser user) async {
+  Future<int> insertUser(WMUser user) async {
     final Database db = await this.database;
 
     var response = await db.insert(
-      tableName,
+      "users",
       user.toMap(),
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
@@ -99,7 +98,7 @@ class UserDB {
     final Database db = await this.database;
 
     var response = await db.insert(
-      tableNameCategories,
+      "categories",
       { category: category },
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
@@ -111,7 +110,7 @@ class UserDB {
   Future<List<WMCategory>> getCategories() async {
     final Database db = await database;
 
-    final List<Map<String, dynamic>> response = await db.query(tableNameCategories);
+    final List<Map<String, dynamic>> response = await db.query("categories");
 
     return List.generate(
         response.length, (i) {
